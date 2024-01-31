@@ -2,80 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Rock Paper Scissors with UI</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body></body>
-  <script>
-    function getComputerChoice() {
-      const choices = ["rock", "paper", "scissors"];
-      let randomIndex = Math.floor(Math.random() * choices.length);
-      let randomChoice = choices[randomIndex];
-      return randomChoice;
-    }
-
-    function playRound() {
-      let playerSelection = prompt("Choose your weapon");
-      let computerSelection = getComputerChoice();
-      let result = ""
-      if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
-        result = "It's a tie!";
-      } else if (
-        playerSelection.toLowerCase() === "paper" &&
-        computerSelection.toLowerCase() === "scissors"
-      ) {
-        result = "You lose!";
-      } else if (
-        playerSelection.toLowerCase() === "scissors" &&
-        computerSelection.toLowerCase() === "paper"
-      ) {
-        result = "You win!";
-      } else if (
-        playerSelection.toLowerCase() === "scissors" &&
-        computerSelection.toLowerCase() === "rock"
-      ) {
-        result = "You lose!";
-      } else if (
-        playerSelection.toLowerCase() === "rock" &&
-        computerSelection.toLowerCase() === "scissors"
-      ) {
-        result = "You win!";
-      } else if (
-        playerSelection.toLowerCase() === "rock" &&
-        computerSelection.toLowerCase() === "paper"
-      ) {
-        result = "You lose!";
-      } else if (
-        playerSelection.toLowerCase() === "paper" &&
-        computerSelection.toLowerCase() === "rock"
-      ) {
-        result = "You win!";
-      } else result = "Invalid answer!";
-      return result;
-    }
-
-    function game() {
-      let rounds = 1;
-      let playerScore = 0;
-      let computerScore = 0;
-      while (rounds <= 5) {
-        let scoreResult = playRound();
-        if (scoreResult === "You win!") {
-          console.log(`Round ${rounds} won!`);
-          playerScore++;
-        } else if (scoreResult === "You lose!") {
-          console.log(`Round ${rounds} lost!`);
-          computerScore++;
-        } else if(scoreResult === "Invalid answer!") {
-          console.log(scoreResult)
-        } else console.log(`Round ${rounds} tie!`);
-        rounds++
-      }
-      if (playerScore > computerScore) {
-        return `You won by ${playerScore} : ${computerScore}`;
-      } else if (computerScore > playerScore) {
-        return `You lost by ${computerScore} : ${playerScore}`;
-      } else return `The game was tie ${playerScore} : ${computerScore}`;
-    }
-  </script>
+  <body>
+    <div class="score">
+      <h1 class="ties">Ties: 0</h1>
+    </div>
+    <div class="winnerDiv">
+      <h1 class="winner"></h1>
+      <button class="reset" onclick="resetGame()">Play Again?</button>
+    </div>
+    <div class="playerSection">
+      <h3 class="playerChoice"></h3>
+      <h3 class="playerScore">Score: 0</h3>
+      <div class="playerImgs">
+        <img src="./images/rock.png" alt="Rock" class="pImg" id="rock" />
+        <img src="./images/paper.png" alt="Paper" class="pImg" id="paper" />
+        <img
+          src="./images/scissors.png"
+          alt="Scissors"
+          class="pImg"
+          id="scissors"
+        />
+      </div>
+    </div>
+    <div class="computerSection">
+      <h3 class="computerChoice"></h3>
+      <h3 class="computerScore">Score: 0</h3>
+      <div class="computerImgs">
+        <img src="./images/rock.png" alt="Rock" class="rock" />
+        <img src="./images/paper.png" alt="Paper" class="paper" />
+        <img src="./images/scissors.png" alt="Scissors" class="scissors" />
+      </div>
+    </div>
+  </body>
+  <script src="code.js"></script>
 </html>
